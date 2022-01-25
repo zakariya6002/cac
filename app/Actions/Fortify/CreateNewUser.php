@@ -35,6 +35,10 @@ class CreateNewUser implements CreatesNewUsers
             'student_address' => $input['student_address'] ?? null,
             'student_licence_number' => $input['student_licence_number'] ?? null,
             'teacher_qualifications' => $input['teacher_qualifications'] ?? null,
+            'dob' => $input['dob'] ?? null,
+            'transportation' => $input['transportation'] ?? null,
+            'bio' => $input['bio'] ?? null,
+            'experience' => $input['experience'] ?? null,
         ]);
     }
 }

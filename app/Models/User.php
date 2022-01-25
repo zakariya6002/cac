@@ -31,6 +31,10 @@ class User extends Authenticatable
         'student_address',
         'student_licence_number',
         'teacher_qualifications',
+        'dob',
+        'transportation',
+        'bio',
+        'experience'
     ];
 
     /**
