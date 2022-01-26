@@ -14,8 +14,8 @@ class AddDobToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('dob')->nullable();
-            $table->boolean('transportation')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('transportation')->nullable();
             $table->string('bio')->nullable();
             $table->string('experience')->nullable();
         });
