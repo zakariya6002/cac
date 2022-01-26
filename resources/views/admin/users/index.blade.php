@@ -6,8 +6,17 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="overflow-hidden sm:rounded-lg">
                 <!-- This example requires Tailwind CSS v2.0+ -->
+                <div>
+                    <label for="price" class="block text-sm font-medium text-gray-700">Email</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <input type="email" name="email" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md">
+                        <div class="absolute inset-y-0 right-0 flex items-center">
+                            <label for="currency" class="sr-only bg-primary">Invite</label>
+                        </div>
+                    </div>
+                </div>
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
