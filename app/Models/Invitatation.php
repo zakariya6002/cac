@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+class Invitatation extends Model
 {
-
-    protected $fillable = ['name'];
     use HasFactory;
+    
+    protected $fillable = ['email'];
 }

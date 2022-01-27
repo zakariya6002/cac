@@ -19,7 +19,7 @@
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
-            <div class="mt-4">
+            <!-- <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
@@ -27,15 +27,15 @@
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
+            </div> -->
 
-            <div class="mt-4">
+            <!-- <div class="mt-4">
                 <x-jet-label for="role_id" value="{{ __('Register as:') }}" />
                 <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <!-- <option value="2">Student</option> -->
+                    <option value="2">Student</option>
                     <option value="3">Tutor</option>
                 </select>
-            </div>
+            </div> -->
 
             <!-- <div class="mt-4" x-show="role_id == 2">
                 <x-jet-label for="student_address" value="{{ __('Address') }}" />
@@ -51,7 +51,7 @@
                 <x-jet-label for="teacher_qualifications" value="{{ __('Qualifications') }}" />
                 <x-jet-input id="teacher_qualifications" class="block mt-1 w-full" type="text" :value="old('teacher_qualifications')" name="teacher_qualifications" />
             </div> -->
-
+<!-- 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">
@@ -67,7 +67,7 @@
                         </div>
                     </x-jet-label>
                 </div>
-            @endif
+            @endif -->
 
             <div class="flex items-center justify-end mt-4">
                 <!-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">

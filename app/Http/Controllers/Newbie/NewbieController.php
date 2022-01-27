@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Newbie;
 
 use App\Models\User;
+use App\Models\Invitatation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
+use App\Notifications\UserInviteNotification;
 
-class UserController extends Controller
+class NewbieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +18,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $users = User::all();
-        return view('admin.users.index',compact('users'));
+    {
+        return view('admin.users.index');
     }
 
     /**
@@ -24,9 +27,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(StoreUserRequest $request)
+    {   
+        $users = Invitatation::create($request->validate());
+        $url = URL::signedRoute('invitation',$users);
+        $users -> notify(new UserInviteNotification($url));
+
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -59,7 +67,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -80,8 +88,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $users)
     {
-        //
+        $users->delete();
+
+        return redirect()->route('admin.users.index');
     }
+    
 }
