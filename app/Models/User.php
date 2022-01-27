@@ -34,7 +34,10 @@ class User extends Authenticatable
         'dob',
         'transportation',
         'bio',
-        'experience'
+        'experience',
+        'phone',
+        'address'
+
     ];
 
     /**

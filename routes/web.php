@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterStepTwo;
 use App\Http\Controllers\Jobs\JobsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Students\LessonController;
@@ -22,9 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:student', 'prefix' => 'student', 'as' => 'student.'], function() {
@@ -38,4 +36,16 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('jobs', JobsController::class);
         Route::resource('sessions', SessionController::class);
     });
+});
+
+Route::group(['middleware' => ['auth','verified']], function() {
+    Route::group(['middleware' => ['registration_completed']], function() {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    });
+    
+    
+    Route::get('register-step2' ,[RegisterStepTwo::class, 'create'])->name('step2.create');
+    Route::post('register-step2' ,[RegisterStepTwo::class, 'store'])->name('step2.post');
 });
