@@ -14,8 +14,9 @@ class SessionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.sessions.index');
+    {   
+        $sessions = SessionType::all();
+        return view('admin.sessions.index',compact('sessions'));
     }
 
     /**
@@ -23,13 +24,9 @@ class SessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        SessionType::create([
-            'type' => $request->type,
-            'price'=> $request->price,
-        ]);
-        return redirect()->route('admin.sessions.index');
+        Return view('admin.sessions.create');
     }
 
     /**
@@ -40,7 +37,11 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SessionType::create([
+            'type' => $request->type,
+            'price'=> $request->price,
+        ]);
+        return redirect()->route('admin.sessions.index');
     }
 
     /**

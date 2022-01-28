@@ -10,9 +10,10 @@
             <div class="overflow-hidden sm:rounded-lg">
             <div class="flex items-center py-2 mb-2">
 
-                <button class="mb-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
+                <button class="modal-open mb-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
                     Add Session
                 </button>
+                @include("admin.sessions.backend.create")
             </div>
                 <!-- This example requires Tailwind CSS v2.0+ -->
                 <div class="flex flex-col">
@@ -37,6 +38,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
+                                    @forelse($sessions as $s)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
@@ -45,7 +47,7 @@
                                                     </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">
-                                                            Jane Cooper
+                                                            {{$s->type}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -53,7 +55,7 @@
                                            
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    R
+                                                    R{{$s->price}}
                                                 </span>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -68,7 +70,11 @@
                                                 </form>
                                             </td>
                                         </tr>
-
+                                        @empty
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">No Tutors </td>
+                                        </tr>
+                                        @endforelse
                                         <!-- More people... -->
                                     </tbody>
                                 </table>
