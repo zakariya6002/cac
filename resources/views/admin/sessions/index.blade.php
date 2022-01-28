@@ -23,19 +23,16 @@
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Name
+                                                Type
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Title
-                                            </th>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Status
-                                            </th>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Role
+                                                Price
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
                                                 <span class="sr-only">Edit</span>
+                                            </th>
+                                            <th scope="col" class="relative px-6 py-3">
+                                                <span class="sr-only">Delete</span>
                                             </th>
                                         </tr>
                                     </thead>
@@ -50,26 +47,25 @@
                                                         <div class="text-sm font-medium text-gray-900">
                                                             Jane Cooper
                                                         </div>
-                                                        <div class="text-sm text-gray-500">
-                                                            jane.cooper@example.com
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                                                <div class="text-sm text-gray-500">Optimization</div>
-                                            </td>
+                                           
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    Active
+                                                    R
                                                 </span>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                Admin
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                <form action="#" method="post">
+                                                @method('DELETE')    
+                                                @csrf
+                                                <button type="submit" class="text-red-600 hover:text-indigo-900" onclick="return confirm('Are you sure you want to delete this')">Delete</button>
+
+                                                </form>
                                             </td>
                                         </tr>
 

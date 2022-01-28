@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Sessions;
 
-use App\Http\Controllers\Controller;
+use App\Models\SessionType;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SessionController extends Controller
 {
@@ -22,9 +23,13 @@ class SessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        SessionType::create([
+            'type' => $request->type,
+            'price'=> $request->price,
+        ]);
+        return redirect()->route('admin.sessions.index');
     }
 
     /**
