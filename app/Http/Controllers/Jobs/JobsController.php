@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Jobs;
 
-use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class JobsController extends Controller
 {
@@ -13,7 +14,8 @@ class JobsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $jobs = Job::all();
         return view('admin.jobs.index');
     }
 

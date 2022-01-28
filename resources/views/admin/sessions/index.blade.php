@@ -8,9 +8,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden sm:rounded-lg">
-            <div class="flex items-center py-2 mb-2">
+            <div class="flex items-center py-2">
 
-                <button class="modal-open mb-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
+                <button class="modal-open mb-2 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
                     Add Session
                 </button>
                 @include("admin.sessions.backend.create")
@@ -62,7 +62,7 @@
                                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                <form action="#" method="post">
+                                                <form action="{{route('admin.sessions.destroy',$s->id)}}" method="POST">
                                                 @method('DELETE')    
                                                 @csrf
                                                 <button type="submit" class="text-red-600 hover:text-indigo-900" onclick="return confirm('Are you sure you want to delete this')">Delete</button>

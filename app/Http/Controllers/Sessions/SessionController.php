@@ -86,6 +86,11 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sessions = SessionType::find($id);
+
+        $sessions -> delete();
+
+        return redirect()->route('admin.sessions.index');
+
     }
 }
