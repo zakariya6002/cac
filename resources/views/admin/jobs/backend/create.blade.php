@@ -7,7 +7,7 @@
     <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
       <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
         <div class="sm:flex sm:items-start">
-          <form class="form" action="#" method="post">
+          <form class="form" action="{{route('admin.jobs.store')}}" method="post">
             @csrf
             <div class="mt-4">
               <label for="GU" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Grade / University</label>
@@ -20,8 +20,12 @@
             </div>
 
             <div class="mt-4">
-              <label for="session_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Session Type</label>
-              <input type="text" name="session_type" id="session_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <label for="session_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Session Type</label>
+              <select name="session_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"" aria-label="Default select example">
+                @foreach($sessions as $s)
+                <option value="{{$s->type}}">{{$s->type}}</option>
+                @endforeach
+              </select>
             </div>
 
             <div class="mt-4">
@@ -35,13 +39,19 @@
             </div>
 
             <div class="mt-4">
-              <label for="province" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Province</label>
-              <input type="text" name="province" id="province" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <label for="province" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Province</label>
+              <select name="province" id="province"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"" aria-label="Default select example">
+                
+                <option >Gauteng</option>
+                <option >Western Cape</option>
+
+                
+              </select>
             </div>
 
             <div class="mt-4">
               <label for="postcode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Postal code</label>
-              <input type="text" name="postcode" id="postcode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+              <input type="number" name="postcode" id="postcode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
             </div>
 
             <div class="bg-gray-10 px-4 py-3 mt-2 sm:px-6 sm:flex sm:flex-row-reverse">

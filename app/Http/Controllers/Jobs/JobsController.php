@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Jobs;
 
 use App\Models\Job;
+use App\Models\SessionType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,8 @@ class JobsController extends Controller
     public function index()
     {   
         $jobs = Job::all();
-        return view('admin.jobs.index');
+        $sessions = SessionType::all();
+        return view('admin.jobs.index',compact('jobs', 'sessions'));
     }
 
     /**
@@ -26,7 +28,8 @@ class JobsController extends Controller
      */
     public function create()
     {
-        //
+        $sessions = SessionType::all();
+        return view('admin.jobs.backend.create',compact('sessions'));
     }
 
     /**
@@ -37,7 +40,16 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Job::create([
+            'GU' => $request->GU,
+            'SC' => $request->SC,
+            'session_type' => $request->session_type,
+            'address' => $request->address,
+            'city' => $request->city,
+            'province'=> $request->province,
+            'postcode' => $request->postcode
+        ]);
+        return redirect()->route('admin.jobs.index');
     }
 
     /**
@@ -82,6 +94,10 @@ class JobsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jobs = Job::find($id);
+
+        $jobs -> delete();
+
+        return redirect()->route('admin.jobs.index');
     }
 }
