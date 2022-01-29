@@ -9,6 +9,7 @@ use App\Http\Controllers\Newbie\NewbieController;
 use App\Http\Controllers\Students\LessonController;
 use App\Http\Controllers\Teachers\CourseController;
 use App\Http\Controllers\Sessions\SessionController;
+use App\Http\Controllers\Subjects\SubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
         Route::resource('jobs', JobsController::class);
         Route::resource('sessions', SessionController::class);
+        Route::resource('subjects', SubjectController::class);
     });
 });
 

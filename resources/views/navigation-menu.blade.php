@@ -47,6 +47,12 @@
                         {{ __('Session') }}
                     </x-jet-nav-link>
                     @endif
+
+                    @if (auth()->user()->role_id == 1)
+                    <x-jet-nav-link href="{{ route('admin.subjects.index') }}" :active="request()->routeIs('admin.subjects.index')">
+                        {{ __('Subjects') }}
+                    </x-jet-nav-link>
+                    @endif
                 </div>
             </div>
 
