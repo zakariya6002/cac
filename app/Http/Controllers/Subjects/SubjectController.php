@@ -14,8 +14,9 @@ class SubjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.subjects.index');
+    {   
+        $subjects = Subject::all();
+        return view('admin.subjects.index',compact('subjects'));
     }
 
     /**
@@ -37,7 +38,7 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         Subject::create([
-            'subject/courses' => $request-> subject,
+            'subject' => $request-> subject,
             'code' => $request-> code
         ]);
         return redirect()->route('admin.subjects.index');
@@ -85,6 +86,12 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subjects = Subject::find($id);
+
+        $subjects->delete();
+
+        return redirect()->route('admin.subjects.index');
+
+
     }
 }

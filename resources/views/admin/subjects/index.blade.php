@@ -37,28 +37,28 @@
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
+                                    @forelse($subjects as $sub)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-                                                    </div>
                                                     <div class="ml-4">
-                                                        <div class="text-sm font-medium text-gray-900">
+                                                        <div class="text-sm font-medium text-gray-900 rounded-full bg-green-100 text-green-800">
+                                                            {{$sub->code}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
                                            
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold">
+                                                {{$sub->subject}}
                                                 </span>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                <form action="#" method="POST">
+                                                <form action="{{route('admin.subjects.destroy', $sub->id)}}" method="POST">
                                                 @method('DELETE')    
                                                 @csrf
                                                 <button type="submit" class="text-red-600 hover:text-indigo-900" onclick="return confirm('Are you sure you want to delete this')">Delete</button>
@@ -66,6 +66,12 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">No Tutors </td>
+                                        </tr>
+                                        @endforelse
                                         <!-- More people... -->
                                     </tbody>
                                 </table>

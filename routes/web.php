@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterStepTwo;
 use App\Http\Controllers\Jobs\JobsController;
@@ -50,6 +52,9 @@ Route::group(['middleware' => ['auth','verified']], function() {
     });
     Route::get('register-step2' ,[RegisterStepTwo::class, 'create'])->name('step2.create');
     Route::post('register-step2' ,[RegisterStepTwo::class, 'store'])->name('step2.post');
-    Route::get('invitation/{users}',[UserController::class,'invitation'])->name('invitation');
-    Route::get('invitation/{users}',[NewbieController::class])->name('invitation');
+    Route::get('/email', function () {
+        Mail::to('zhassan6002@gmail.com')->send(new WelcomeMail);
+        return new WelcomeMail();
+    });
 });
+

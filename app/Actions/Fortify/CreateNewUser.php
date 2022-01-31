@@ -41,6 +41,7 @@ class CreateNewUser implements CreatesNewUsers
             'experience' => $input['experience'] ?? null,
             'phone' => $input['phone'] ?? null,
         'address' => $input['address'] ?? null,
+        'subject' => $input['subject'] ?? null,
         ]);
     }
 }
