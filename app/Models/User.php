@@ -39,7 +39,8 @@ class User extends Authenticatable
         'experience',
         'phone',
         'address',
-        'subject'
+        'subject',
+        'apply_id'
 
     ];
 

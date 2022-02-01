@@ -4,7 +4,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden sm:rounded-lg">
             <div class="flex items-center py-2">

@@ -12,6 +12,7 @@ use App\Http\Controllers\Students\LessonController;
 use App\Http\Controllers\Teachers\CourseController;
 use App\Http\Controllers\Sessions\SessionController;
 use App\Http\Controllers\Subjects\SubjectController;
+use App\Http\Controllers\AppliedJobs\ApplyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,13 +35,14 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('lessons', \App\Http\Controllers\Students\LessonController::class);
     });
    Route::group(['middleware' => 'role:teacher', 'prefix' => 'teacher', 'as' => 'teacher.'], function() {
-       Route::resource('courses', \App\Http\Controllers\Teachers\CourseController::class);
+       Route::resource('apply', \App\Http\Controllers\Teachers\CourseController::class);
    });
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
         Route::resource('jobs', JobsController::class);
         Route::resource('sessions', SessionController::class);
         Route::resource('subjects', SubjectController::class);
+        Route::resource('applied',ApplyController::class);
     });
 });
 

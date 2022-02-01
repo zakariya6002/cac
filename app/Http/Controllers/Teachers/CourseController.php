@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Teachers;
 
+use App\Models\Job;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,6 +14,8 @@ class CourseController extends Controller
             abort(403);
         }
 
-        return view('teacher.courses.index');
+        $jobs = Job::all();
+
+        return view('teacher.apply.index',compact('jobs'));
     }
 }

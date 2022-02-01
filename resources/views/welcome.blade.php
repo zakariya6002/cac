@@ -49,7 +49,7 @@
 										<!--begin::Heading-->
 										<div class="card-px text-center pt-20 pb-5">
                                         <a href="#">
-							<img alt="Logo" src="images/logo2.png" />
+							<img alt="Logo" src="images/logo.png" />
 						</a>
 											<!--begin::Title-->
 											<h2 class="fs-2x fw-bolder mb-0"></h2>
