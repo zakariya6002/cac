@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Applied extends Model
+class Apply extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['description','user_id'];
+
 }

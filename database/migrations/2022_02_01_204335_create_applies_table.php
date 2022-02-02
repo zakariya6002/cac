@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddApplyToUsersTable extends Migration
+class CreateAppliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddApplyToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('apply_id')->nullable()->constrained();
+        Schema::create('applies', function (Blueprint $table) {
+            $table->id();
+            $table->string('description');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddApplyToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('applies');
     }
 }

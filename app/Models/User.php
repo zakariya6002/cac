@@ -40,8 +40,6 @@ class User extends Authenticatable
         'phone',
         'address',
         'subject',
-        'apply_id'
-
     ];
 
     /**

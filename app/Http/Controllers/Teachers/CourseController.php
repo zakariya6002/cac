@@ -16,6 +16,6 @@ class CourseController extends Controller
 
         $jobs = Job::all();
 
-        return view('teacher.apply.index',compact('jobs'));
+        return view('teacher.jobs.index',compact('jobs'));
     }
 }

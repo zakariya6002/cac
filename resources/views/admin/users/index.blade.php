@@ -100,6 +100,10 @@
                                         @empty
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">No Tutors </td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
                                         </tr>
                                         @endforelse
                                         <!-- More people... -->

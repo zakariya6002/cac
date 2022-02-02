@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\AppliedJobs;
+namespace App\Http\Controllers\Applied;
 
-use App\Models\Applied;
+use App\Models\Apply;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class ApplyController extends Controller
+class AppliedController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,10 @@ class ApplyController extends Controller
     public function index()
     {
         $users = Auth::user();
-        $apply = Applied::where(['apply_id' => $users->id])->orderBy('id','desc')->get();
-        return view('admin.applied.index',compact('user', 'apply'));
+        $apply = Apply::join('users', 'users.id', '=','applies.user_id')
+        ->get();
+
+        return view ('admin.applied.index',compact('users', 'apply'));
     }
 
     /**

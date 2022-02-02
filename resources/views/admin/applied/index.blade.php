@@ -8,13 +8,7 @@
     <div class="py-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden sm:rounded-lg">
-            <div class="flex items-center py-2">
-
-                <button class="modal-open mb-2 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
-                    Add Session
-                </button>
-                @include("admin.applied.backend.create")
-            </div>
+                <h1 class="mb-3 mt-2">There are {{$apply->count()}} - applied applications</h1>
                 <!-- This example requires Tailwind CSS v2.0+ -->
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -24,10 +18,10 @@
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Type
+                                                Name 
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Price
+                                                Description
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
                                                 <span class="sr-only">Edit</span>
@@ -38,7 +32,9 @@
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
-                                    
+                                        @if ($apply ->count() > 0)
+
+                                        @forelse($apply as $a)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
@@ -47,15 +43,15 @@
                                                     </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">
-                                                          
+                                                         {{$a->name}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
-                                           
+
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                              
+                                                    {{$a->description}}
                                                 </span>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -63,15 +59,27 @@
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                                 <form action="#" method="POST">
-                                                @method('DELETE')    
-                                                @csrf
-                                                <button type="submit" class="text-red-600 hover:text-indigo-900" onclick="return confirm('Are you sure you want to delete this')">Delete</button>
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" class="text-red-600 hover:text-indigo-900" onclick="return confirm('Are you sure you want to delete this')">Delete</button>
 
                                                 </form>
                                             </td>
                                         </tr>
+                                        @empty
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">No Jobs Applied</td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                           
+                                        </tr>
                                         
+                                        @endforelse
                                         <!-- More people... -->
+
+                                        @endif
+                                       
                                     </tbody>
                                 </table>
                             </div>

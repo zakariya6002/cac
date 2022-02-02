@@ -76,20 +76,28 @@
                                                 {{$j->postcode}}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium ">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900 rounded-full bg-blue-100 text-blue-900">Apply</a>
+                                                <a href="#" class="modal-open text-indigo-600 hover:text-indigo-900 rounded-full bg-blue-100 text-blue-900">Apply</a>
                                             </td>
-                                           
+                                            
                                         </tr>
 
                                         @empty
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">No Jobs</td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap"></td>
                                         </tr>
                                         @endforelse
 
                                         <!-- More people... -->
                                     </tbody>
                                 </table>
+                                @include("teacher.apply.create")
                             </div>
                         </div>
                     </div>

@@ -6,13 +6,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterStepTwo;
 use App\Http\Controllers\Jobs\JobsController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Apply\ApplyController;
 use App\Http\Controllers\Admin\NewUserController;
 use App\Http\Controllers\Newbie\NewbieController;
+use App\Http\Controllers\Applied\AppliedController;
 use App\Http\Controllers\Students\LessonController;
 use App\Http\Controllers\Teachers\CourseController;
 use App\Http\Controllers\Sessions\SessionController;
 use App\Http\Controllers\Subjects\SubjectController;
-use App\Http\Controllers\AppliedJobs\ApplyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,14 +36,15 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('lessons', \App\Http\Controllers\Students\LessonController::class);
     });
    Route::group(['middleware' => 'role:teacher', 'prefix' => 'teacher', 'as' => 'teacher.'], function() {
-       Route::resource('apply', \App\Http\Controllers\Teachers\CourseController::class);
+       Route::resource('jobs', \App\Http\Controllers\Teachers\CourseController::class);
+       Route::resource('apply', ApplyController::class);
    });
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
         Route::resource('jobs', JobsController::class);
         Route::resource('sessions', SessionController::class);
         Route::resource('subjects', SubjectController::class);
-        Route::resource('applied',ApplyController::class);
+        Route::resource('applied',AppliedController::class);
     });
 });
 

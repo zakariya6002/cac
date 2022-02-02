@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAppliedsTable extends Migration
+class AddUserIdToAppliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateAppliedsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applieds', function (Blueprint $table) {
-            $table->id();
-            $table->string('description');
-            $table->timestamps();
+        Schema::table('applies', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateAppliedsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applieds');
+        Schema::table('applies', function (Blueprint $table) {
+            //
+        });
     }
 }

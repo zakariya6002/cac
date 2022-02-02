@@ -30,7 +30,7 @@
                     @endif
 
                     @can('manage-courses')
-                        <x-jet-nav-link href="{{ route('teacher.apply.index') }}" :active="request()->routeIs('teacher.apply.index')">
+                        <x-jet-nav-link href="{{ route('teacher.jobs.index') }}" :active="request()->routeIs('teacher.jobs.index')">
                             {{ __('Jobs') }}
                         </x-jet-nav-link>
                     @endif
@@ -40,6 +40,7 @@
                         {{ __('Jobs') }}
                     </x-jet-nav-link>
                     @endif
+
                     @if (auth()->user()->role_id == 1)
                     <x-jet-nav-link href="{{ route('admin.applied.index') }}" :active="request()->routeIs('admin.applied.index')">
                         {{ __('Applied Jobs') }}

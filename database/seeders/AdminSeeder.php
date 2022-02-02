@@ -21,5 +21,12 @@ class AdminSeeder extends Seeder
             'email_verified_at'=> now(),
             'role_id'=>1,
         ]);
+        User::create([
+            'name'=>'Zakariya Hassan',
+            'email'=>'zhassan6002@gmail.com',
+            'password'=>bcrypt('password'),
+            'email_verified_at'=> now(),
+            'role_id'=>3,
+        ]);
     }
 }

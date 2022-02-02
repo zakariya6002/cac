@@ -21,9 +21,9 @@
 
             <div class="mt-4">
             <label for="session_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Session Type</label>
-              <select name="session_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"" aria-label="Default select example">
+              <select name="session_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required aria-label="Default select example">
                 @foreach($sessions as $s)
-                <option value="{{$s->type}}">{{$s->type}}</option>
+                <option value="{{$s->type}}" required>{{$s->type}}</option>
                 @endforeach
               </select>
             </div>
