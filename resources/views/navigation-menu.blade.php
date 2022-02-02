@@ -29,9 +29,15 @@
                         </x-jet-nav-link>
                     @endif
 
-                    @can('manage-courses')
+                    @if (auth()->user()->role_id == 3)
                         <x-jet-nav-link href="{{ route('teacher.jobs.index') }}" :active="request()->routeIs('teacher.jobs.index')">
                             {{ __('Jobs') }}
+                        </x-jet-nav-link>
+                    @endif
+
+                    @if (auth()->user()->role_id == 3)
+                        <x-jet-nav-link href="{{ route('teacher.upload.index') }}" :active="request()->routeIs('teacher.upload.index')">
+                            {{ __('Files') }}
                         </x-jet-nav-link>
                     @endif
 
