@@ -18,6 +18,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="https://cdn-tailwindcss.vercel.app/"></script>
+        
 
     </head>
     <body class="font-sans antialiased">
@@ -43,4 +44,5 @@
 
         @livewireScripts
     </body>
+    
 </html>
