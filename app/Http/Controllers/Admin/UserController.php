@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\File;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //
     }
 
     /**

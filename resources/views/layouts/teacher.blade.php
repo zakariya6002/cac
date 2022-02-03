@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link href="{{url('https://unpkg.com/filepond@^4/dist/filepond.css')}}" rel="stylesheet" />
 
         @livewireStyles
 
@@ -43,6 +44,8 @@
         @stack('modals')
 
         @livewireScripts
+        <script src="{{url('https://unpkg.com/filepond@^4/dist/filepond.js')}}"></script>
+        @yield('scripts')
     </body>
     
 </html>

@@ -36,7 +36,7 @@
                     @endif
 
                     @if (auth()->user()->role_id == 3)
-                        <x-jet-nav-link href="{{ route('teacher.upload.index') }}" :active="request()->routeIs('teacher.upload.index')">
+                        <x-jet-nav-link href="{{ route('teacher.files') }}" :active="request()->routeIs('teacher.files')">
                             {{ __('Files') }}
                         </x-jet-nav-link>
                     @endif

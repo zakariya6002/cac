@@ -31,7 +31,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::post('upload',[ UploadController::class, 'store']);
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:student', 'prefix' => 'student', 'as' => 'student.'], function() {
         Route::resource('lessons', \App\Http\Controllers\Students\LessonController::class);
@@ -39,7 +39,8 @@ Route::group(['middleware' => 'auth'], function() {
    Route::group(['middleware' => 'role:teacher', 'prefix' => 'teacher', 'as' => 'teacher.'], function() {
        Route::resource('jobs', \App\Http\Controllers\Teachers\CourseController::class);
        Route::resource('apply', ApplyController::class);
-       Route::resource('upload', UploadController::class);
+       Route::get('/files',[ UploadController::class, 'index'])->name('files');
+       
    });
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
@@ -47,7 +48,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('sessions', SessionController::class);
         Route::resource('subjects', SubjectController::class);
         Route::resource('applied',AppliedController::class);
-        Route::resource('upload', UploadController::class);
     });
 });
 

@@ -3,96 +3,40 @@
 namespace App\Http\Controllers\File;
 
 use App\Models\File;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UploadController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('teacher.files.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
-    
-           ]);
-    
-           $path = $request->file('file')->store('public/files');
-    
-    
-           $save = new File;
-    
-           $save->path = $path;
-    
-           return redirect('')->with('status', 'File Has been uploaded successfully');
-    }
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName();
+            $folder = uniqid() . '-' . now()->timestamp;
+            $file->storeAs('files/12121212' . $folder, $filename);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+            File::create([
+                'name'=>$filename,
+                'path'=>$folder
+            ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            return $folder;
+        }
+        $user = User::find();
+        $file = File::where('path', $request->file)->first();
+        if($file){
+            $user ->addMedia(storage_path('app/public/storage/files/12121212' . $request->file . '/' . $file->filename))->toMediaCollection('files');
+            rmdir(storage_path('app/public/storage/files/12121212' . $request->file));
+            $file->delete();
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return '';
     }
 }
