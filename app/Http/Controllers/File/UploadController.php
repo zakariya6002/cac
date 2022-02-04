@@ -29,7 +29,7 @@ class UploadController extends Controller
 
             return $folder;
         }
-        $user = User::find();
+        $user = User::first();
         $file = File::where('path', $request->file)->first();
         if($file){
             $user ->addMedia(storage_path('app/public/storage/files/12121212' . $request->file . '/' . $file->filename))->toMediaCollection('files');

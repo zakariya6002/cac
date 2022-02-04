@@ -55,6 +55,10 @@
                 <x-jet-input id="transportation" class="block mt-1" type="checkbox" name="transportation" :value="old('transportation')" autofocus autocomplete="transportation" />
             </div>
 
+            <div class="mt-4">
+            <input type="file" name="file" class="filepond" id="file">
+            </div>
+            
             <!-- <div class="mt-4" x-show="role_id == 2">
                 <x-jet-label for="student_address" value="{{ __('Address') }}" />
                 <x-jet-input id="student_address" class="block mt-1 w-full" type="text" :value="old('student_address')" name="student_address" />
@@ -76,5 +80,22 @@
                 </x-jet-button>
             </div>
         </form>
+        @section('scripts')
+  <script>
+    // Get a reference to the file input element
+    const inputElement = document.querySelector('input[id="file"]');
+
+    // Create a FilePond instance
+    const pond = FilePond.create(inputElement);
+    FilePond.setOptions({
+      server: {
+        url: '/upload',
+        headers: {
+          'X-CSRF-Token': '{{csrf_token()}}'
+        }
+      }
+    });
+  </script>
+  @endsection
     </x-jet-authentication-card>
 </x-guest-layout>

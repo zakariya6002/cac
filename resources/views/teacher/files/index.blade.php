@@ -4,41 +4,6 @@
     </h2>
   </x-slot>
 
-  <div class="py-5">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="overflow-hidden">
-        <form>
-        <div>
-                <x-jet-input id="name" placeholder="Name of the file" class="block mt-1 w-60 ml-2" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <div class="mt-4">
-            <input type="file" name="file" class="filepond" id="file">
-            </div>
-         
-          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  @section('scripts')
-  <script>
-    // Get a reference to the file input element
-    const inputElement = document.querySelector('input[id="file"]');
-
-    // Create a FilePond instance
-    const pond = FilePond.create(inputElement);
-    FilePond.setOptions({
-      server: {
-        url: '/upload',
-        headers: {
-          'X-CSRF-Token': '{{csrf_token()}}'
-        }
-      }
-    });
-  </script>
-  @endsection
   <div class="py-2">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="overflow-hidden sm:rounded-lg">

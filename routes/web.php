@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function() {
        Route::resource('jobs', \App\Http\Controllers\Teachers\CourseController::class);
        Route::resource('apply', ApplyController::class);
        Route::get('/files',[ UploadController::class, 'index'])->name('files');
+       Route::post('upload',[ UploadController::class, 'store'])->name('store');
        
    });
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
