@@ -38,7 +38,7 @@
                                                 Postal Code
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
-                                                <span class="sr-only">Edit</span>
+                                                <span class="sr-only">Apply</span>
                                             </th>
                                             
                                         </tr>
